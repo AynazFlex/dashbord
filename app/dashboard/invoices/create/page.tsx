@@ -1,0 +1,25 @@
+import { fetchCustomers } from "@/app/lib/data";
+import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
+import Form from "@/app/ui/invoices/create-form";
+
+const Page = async () => {
+  const customers = await fetchCustomers();
+
+  return (
+    <main>
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: "Счета", href: "/dashboard/invoices" },
+          {
+            label: "Создать счет",
+            href: "/dashboard/invoices/create",
+            active: true,
+          },
+        ]}
+      />
+      <Form customers={customers} />
+    </main>
+  );
+};
+
+export default Page;
